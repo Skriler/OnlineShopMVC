@@ -1,0 +1,13 @@
+﻿@model OperatingSystem
+@{
+    ViewData["Title"] = "OS Info";
+}
+
+<div>
+    <h2 class="text-center">@ViewData["Title"]</h2>
+    <div>
+        <p>Platform: @Model.Platform</p>
+        <p>Version: @Model.Version</p>
+        <p>Full Version: @Model.VersionString</p>
+    </div>
+</div>

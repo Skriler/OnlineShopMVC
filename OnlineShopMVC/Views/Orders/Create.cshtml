@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Order product";
+}
+
+<div>
+    <h2 class="text-center">@ViewData["Title"]</h2>
+    <form method="POST">
+        <input hidden value="@ViewBag.ProductId" name="productId" />
+
+        <label for="username">Enter your username:</label>
+        <br />
+        <input type="text" name="username" id="username" />
+        <br /><br />
+
+        <label for="address">Enter your address:</label>
+        <br />
+        <input type="text" name="address" id="address" />
+        <br /><br />
+
+        <label for="contactPhone">Enter your contact phone:</label>
+        <br />
+        <input type="text" name="contactPhone" id="contactPhone" />
+        <br /><br />
+
+        <input type="submit" value="Buy" />
+    </form>
+</div>

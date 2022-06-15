@@ -1,0 +1,40 @@
+﻿@model OnlineShopMVC.Models.Product
+@{
+    ViewData["Title"] = "Edit Product";
+}
+
+<div>
+    <h2 class="text-center">@ViewData["Title"]</h2>
+    <form method="post">
+        <div asp-validation-summary="All"></div>
+        <input asp-for="@Model.Id" type="hidden" />
+        <input asp-for="@Model.Type" type="hidden" />
+        <input asp-for="@Model.Producer" type="hidden" />
+
+        <div>
+            <label>Title:</label>
+            <div>
+                <input asp-for="@Model.Title" />
+                <span asp-validation-for="@Model.Title"></span>
+            </div>
+        </div>
+
+        <div>
+            <label>Price:</label>
+            <div>
+                <input asp-for="@Model.Price" />
+                <span asp-validation-for="@Model.Price"></span>
+            </div>
+        </div>
+
+        <div>
+            <label>Amount:</label>
+            <div>
+                <input asp-for="@Model.Amount" />
+                <span asp-validation-for="@Model.Amount"></span>
+            </div>
+        </div>
+
+        <input type="submit" value="Edit" />
+    </form>
+</div>

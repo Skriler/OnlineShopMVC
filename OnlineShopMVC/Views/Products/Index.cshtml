@@ -1,0 +1,45 @@
+﻿@model IEnumerable<OnlineShopMVC.Models.Product>
+@{
+    ViewData["Title"] = "Product List";
+}
+
+<div>
+    <h2 class="text-center">@ViewData["Title"]</h2>
+    @Html.ActionLink("Add product", "Create", "Products", null, new { @class = "btn btn-success" })
+    <table class="table">
+        <tr>
+            <th><b>Title</b></th>
+            <th><b>@Html.ActionLink("Price", "Index", "Products", new { sortOrder = ViewBag.PriceSortParm })</b></th>
+            <th><b>@Html.ActionLink("Producer", "Index", "Products", new { sortOrder = ViewBag.ProducerSortParm })</b></th>
+            <th><b>Type</b></th>
+            <th><b>Amount</b></th>
+            <th></th>
+        </tr>
+        @foreach (Product product in Model)
+        {
+            <tr>
+                <td>@product.Title</td>
+                <td>@product.Price</td>
+                <td>@product.Producer</td>
+                <td>@product.Type</td>
+                <td>@product.Amount</td>
+                <td>
+                    <form method="post">
+                        <a class="btn btn-success" asp-action="Details" asp-route-id="@product.Id">
+                            Details
+                        </a>
+                        <a class="btn btn-info" asp-action="Edit" asp-route-id="@product.Id">
+                            Edit
+                        </a>
+                        <button class="btn btn-danger" type="submit" asp-action="Delete" asp-route-id="@product.Id">
+                            Delete
+                        </button>
+                        <a class="btn btn-info" asp-controller="Orders" asp-action="Create" asp-route-id="@product.Id">
+                            Buy
+                        </a>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

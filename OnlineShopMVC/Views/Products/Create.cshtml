@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Add Product";
+}
+
+<div>
+    <h2 class="text-center">@ViewData["Title"]</h2>
+    <form method="POST">
+        <label for="title">Enter title:</label>
+        <br />
+        <input type="text" name="title" id="title" />
+        <br /><br />
+
+        <label for="price">Enter price:</label>
+        <br />
+        <input type="number" name="price" id="price" />
+        <br /><br />
+
+        <label for="producer">Enter producer:</label>
+        <br />
+        <input type="text" name="producer" id="producer" />
+        <br /><br />
+
+        <label for="type">Enter type:</label>
+        <br />
+        <input type="text" name="type" id="type" />
+        <br /><br />
+
+        <label for="amount">Enter amount:</label>
+        <br />
+        <input type="number" name="amount" id="amount" />
+        <br /><br />
+
+        <input type="submit" value="Add" />
+    </form>
+</div>

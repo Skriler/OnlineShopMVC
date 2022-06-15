@@ -39,6 +39,7 @@ namespace OnlineShopMVC
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseWebRoot("Static");
                 });
     }
 }

@@ -12,7 +12,6 @@ namespace OnlineShopMVC.Services
         {
             switch(sortOrder)
             {
-                
                 case "Price":
                     products = products.OrderBy(p => p.Price).ToList();
                     break;

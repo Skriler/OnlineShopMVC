@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using OnlineShopMVC.Models;
+using OnlineShopMVC.Middlewares;
 
 namespace OnlineShopMVC
 {
@@ -32,7 +33,12 @@ namespace OnlineShopMVC
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (env.IsEnvironment("CustomEnv"))
+            {
+                // Logging only in custom environment
+                app.UseLogUrl();
+            }
+            else if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -46,12 +52,18 @@ namespace OnlineShopMVC
 
             app.UseAuthorization();
 
+            // custom middlewares
+            app.UseErrorHandling();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            // custom middlewares
+            app.UseCustomRouting();
         }
     }
 }

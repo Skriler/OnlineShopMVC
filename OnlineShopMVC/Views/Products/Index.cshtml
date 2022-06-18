@@ -1,21 +1,72 @@
-﻿@model IEnumerable<OnlineShopMVC.Models.Product>
+﻿@model ProductListViewModel
 @{
     ViewData["Title"] = "Product List";
 }
 
 <div>
     <h2 class="text-center">@ViewData["Title"]</h2>
+
+    <form method="get">
+        <div class="form-inline">
+            <label>Type: </label>
+            <input name="selectedType" value="@Model.FilterViewModel.SelectedType" class="form-control" />
+            <label>Producer: </label>
+            <select name="selectedProducer" asp-items="Model.FilterViewModel.Producers" class="form-control"></select>
+            <input type="submit" value="Фильтр" class="btn btn-info" />
+        </div>
+    </form>
     @Html.ActionLink("Add product", "Create", "Products", null, new { @class = "btn btn-success" })
+
     <table class="table">
         <tr>
-            <th><b>Title</b></th>
-            <th><b>@Html.ActionLink("Price", "Index", "Products", new { sortOrder = ViewBag.PriceSortParm })</b></th>
-            <th><b>@Html.ActionLink("Producer", "Index", "Products", new { sortOrder = ViewBag.ProducerSortParm })</b></th>
-            <th><b>Type</b></th>
-            <th><b>Amount</b></th>
+            <th>
+                @Html.ActionLink("Title", "Index", "Products",
+                    new
+                         {
+                        selectedType = Model.FilterViewModel.SelectedType,
+                        selectedProducer = Model.FilterViewModel.SelectedProducer,
+                        sortOrder = Model.SortViewModel.TitleSort
+                    })
+            </th>
+            <th>
+                @Html.ActionLink("Price", "Index", "Products",
+                    new
+                         {
+                        selectedType = Model.FilterViewModel.SelectedType,
+                        selectedProducer = Model.FilterViewModel.SelectedProducer,
+                        sortOrder = Model.SortViewModel.PriceSort
+                    })
+            </th>
+            <th>
+                @Html.ActionLink("Producer", "Index", "Products",
+                    new
+                         {
+                        selectedType = Model.FilterViewModel.SelectedType,
+                        selectedProducer = Model.FilterViewModel.SelectedProducer,
+                        sortOrder = Model.SortViewModel.ProducerSort
+                    })
+            </th>
+            <th>
+                @Html.ActionLink("Type", "Index", "Products",
+                    new
+                         {
+                        selectedType = Model.FilterViewModel.SelectedType,
+                        selectedProducer = Model.FilterViewModel.SelectedProducer,
+                        sortOrder = Model.SortViewModel.TypeSort
+                    })
+            </th>
+            <th>
+                @Html.ActionLink("Amount", "Index", "Products",
+                    new
+                         {
+                        selectedType = Model.FilterViewModel.SelectedType,
+                        selectedProducer = Model.FilterViewModel.SelectedProducer,
+                        sortOrder = Model.SortViewModel.AmountSort
+                    })
+            </th>
             <th></th>
         </tr>
-        @foreach (Product product in Model)
+        @foreach (Product product in Model.Products)
         {
             <tr>
                 <td>@product.Title</td>
@@ -42,4 +93,28 @@
             </tr>
         }
     </table>
+    @if (Model.PageViewModel.HasPreviousPage)
+    {
+        @Html.ActionLink("Previous page", "Index", "Products",
+            new
+            {
+                selectedType = Model.FilterViewModel.SelectedType,
+                selectedProducer = Model.FilterViewModel.SelectedProducer,
+                page = Model.PageViewModel.PageNumber - 1,
+                sortOrder = Model.SortViewModel.Current
+            },
+            new { @class = "btn btn-info" })
+    }
+    @if (Model.PageViewModel.HasNextPage)
+    {
+        @Html.ActionLink("Next page", "Index", "Products",
+            new
+            {
+                selectedType = Model.FilterViewModel.SelectedType,
+                selectedProducer = Model.FilterViewModel.SelectedProducer,
+                page = Model.PageViewModel.PageNumber + 1,
+                sortOrder = Model.SortViewModel.Current
+            },
+            new { @class = "btn btn-info" })
+    }
 </div>

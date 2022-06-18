@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using OnlineShopMVC.Models;
+using OnlineShopMVC.Models.ViewModels;
 
 namespace OnlineShopMVC.Controllers
 {

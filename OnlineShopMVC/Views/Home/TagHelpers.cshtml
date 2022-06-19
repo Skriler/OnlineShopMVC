@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Tag Helpers";
+}
+
+<div>
+    <h2 class="text-center">@ViewData["Title"]</h2>
+
+    <custom-header style-info='new StyleInfo("#806703", "cursive", 30)'>Header tag helper</custom-header>
+
+    <br><br>
+
+    <h4>Date tag helper:</h4>
+    <date color="green"></date>
+    <date color="navy" is-month-first-format="true"></date>
+
+    <br><br>
+
+    <h4>Email tag helper:</h4>
+    <email mail-to="someone" style-info='new StyleInfo("#0080ab", "sans-serif", 20)'></email>
+
+    <br><br>
+
+    <h4>Product info tag helper:</h4>
+    @{
+        Product chicken = new Product("Chicken", 3884, "Voonyx", "In felis", 378);
+    }
+    <product-info product="chicken"></product-info>
+
+    <br><br>
+
+    <h4>Product list tag helper:</h4>
+    @{
+        List<Product> products = new List<Product>
+{
+            new Product("Chicken", 3884, "Voonyx", "In felis", 378),
+            new Product("Kippers", 7499, "Skipfire", "Mi", 207),
+            new Product("Pork", 2191, "Gabtype", "Nisl", 186),
+            new Product("Soup", 6631, "Yodoo", "Scelerisque quam", 128),
+            new Product("Sweater", 8836, "Gabtype", "Quis", 496),
+            new Product("Trueblue", 4009, "Skipfire", "Nunc", 338),
+            new Product("Truffle Cups", 1740, "Tagtune", "Aenean auctor", 441)
+        };
+    }
+    <product-list products="products" font-size="18"></product-list>
+</div>

@@ -35,6 +35,16 @@ namespace OnlineShopMVC.Controllers
             return View(os);
         }
 
+        public ViewResult HtmlHelpers()
+        {
+            return View();
+        }
+
+        public ViewResult TagHelpers()
+        {
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
